@@ -2,6 +2,7 @@ package com.board.configuration;
 
 import javax.sql.DataSource;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -50,6 +51,11 @@ public class DBConfiguration {
 
     public org.apache.ibatis.session.Configuration mybatisConfig() {
         return new org.apache.ibatis.session.Configuration();
+    }
+
+    @Bean
+    public LayoutDialect layoutDialect() {
+        return new LayoutDialect();
     }
 
 }
