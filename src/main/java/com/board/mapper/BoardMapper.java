@@ -1,9 +1,10 @@
 package com.board.mapper;
 
-import com.board.domain.BoardDTO;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
+import com.board.domain.BoardDTO;
 
 @Mapper
 public interface BoardMapper {
