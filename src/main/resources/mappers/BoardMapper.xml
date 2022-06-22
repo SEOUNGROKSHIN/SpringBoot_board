@@ -5,16 +5,16 @@
 
     <sql id="boardColumns">
         idx
-        , title
-        , content
-        , writer
-        , view_cnt
-        , notice_yn
-        , secret_yn
+        , title as title
+        , content as content
+        , writer as writer
+        , view_cnt as viewCnt
+        , notice_yn as noticeYn
+        , secret_yn as secretYn
         , delete_yn as deleteYn
-        , insert_time
-        , update_time
-        , delete_time
+        , insert_time as insertTime
+        , update_time as updateTime
+        , delete_time as deleteTime
     </sql>
 
     <insert id="insertBoard" parameterType="com.board.domain.BoardDTO">
