@@ -1,5 +1,8 @@
 package com.board.aop;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -12,16 +15,13 @@ import org.springframework.transaction.interceptor.RollbackRuleAttribute;
 import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
 
-import java.util.Collections;
-import java.util.List;
-
 @Configuration
 public class TransactionAspect {
 
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-    private static final String EXPRESSION = "excution(* com.board..service.*.impl.*(..))";
+    private static final String EXPRESSION = "execution(* com.board..service.*Impl.*(..))";
 
     @Bean
     public TransactionInterceptor transactionAdvice() {

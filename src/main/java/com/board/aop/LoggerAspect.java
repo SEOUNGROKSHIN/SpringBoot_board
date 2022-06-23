@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Aspect
 @Component
+@Aspect
 public class LoggerAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -19,10 +19,12 @@ public class LoggerAspect {
         String type = "";
         String name = joinPoint.getSignature().getDeclaringTypeName();
 
-        if(name.contains("Controller") == true) {
+        if (name.contains("Controller") == true) {
             type = "Controller ===> ";
+
         } else if (name.contains("Service") == true) {
             type = "ServiceImpl ===> ";
+
         } else if (name.contains("Mapper") == true) {
             type = "Mapper ===> ";
         }
@@ -30,4 +32,5 @@ public class LoggerAspect {
         logger.debug(type + name + "." + joinPoint.getSignature().getName() + "()");
         return joinPoint.proceed();
     }
+
 }
