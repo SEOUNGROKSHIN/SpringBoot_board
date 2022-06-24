@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class BoardDTO {
+public class BoardDTO extends  CommonDTO{
     /**
      * 번호 (PK)
      */
