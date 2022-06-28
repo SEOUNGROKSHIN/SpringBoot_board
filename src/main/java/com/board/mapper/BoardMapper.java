@@ -2,7 +2,6 @@ package com.board.mapper;
 
 import java.util.List;
 
-import com.board.paging.Criteria;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.board.domain.BoardDTO;

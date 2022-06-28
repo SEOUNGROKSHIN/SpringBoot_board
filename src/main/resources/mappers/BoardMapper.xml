@@ -63,20 +63,27 @@
 
     <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
         SELECT
-               <include refid="boardColumns"/>
-          FROM tb_board
-        WHERE delete_yn = 'N'
-        ORDER BY notice_yn ASC,
-                 idx DESC,
-                 insert_time DESC
-           LIMIT
-        #{paginationInfo.firstRecordIndex}, #{recordsPerPage}
+        <include refid="boardColumns" />
+        FROM
+        tb_board
+        WHERE
+        delete_yn = 'N'
+        <include refid="mappers.CommonMapper.search" />
+        ORDER BY
+        notice_yn ASC,
+        idx DESC,
+        insert_time DESC
+        <include refid="mappers.CommonMapper.paging" />
     </select>
 
     <select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
-        SELECT COUNT(*)
-        FROM tb_board
-        WHERE delete_yn = 'N'
+        SELECT
+        COUNT(*)
+        FROM
+        tb_board
+        WHERE
+        delete_yn = 'N'
+        <include refid="mappers.CommonMapper.search" />
     </select>
 
 </mapper>
