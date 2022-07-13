@@ -2,9 +2,7 @@
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="board/fragments/header :: main-head">
     <style>
-        .searchform {
-    text-align : center;
-}
+
 
     </style>
 </head>
@@ -50,6 +48,32 @@
         </div>
     </div>
 </nav>
+
+    <th:block layout:fragment="content">
+        <div class="table-responsive clearfix">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                    <th>공지 제목</th>
+                    <th>작성자</th>
+                    <th>등록일</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr th:if="${not #lists.isEmpty( boardList )}" th:each="row : ${boardList}">
+                  <td scope="row" th:text="${#strings.equals( row.noticeYn, 'Y' ) ? '공지' : row.idx}"></td>
+                  <td class="text-left">
+                      <a th:href="@{/board/view.do( idx=${row.idx} )}" th:text="${row.title}"></a>
+                  </td>
+                  <td th:text="${#temporals.format( row.insertTime, 'yyyy-MM-dd' )}"></td>
+              </tr>
+              <tr th:unless="${not #lists.isEmpty( boardList )}">
+                  <td colspan="5">조회된 결과가 없습니다.</td>
+              </tr>
+              </tbody>
+            </table>
+        </div>
+    </th:block>
 </body>
 
 </html>

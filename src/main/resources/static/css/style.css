@@ -1185,7 +1185,7 @@ Version 1.0
 }
 .searchform .input-search {
   border: none;
-  width: 190px;
+  width: 400px;
   height: 34px;
   padding: 7px 40px 7px 20px;
   font-size: 13px;
@@ -1196,6 +1196,7 @@ Version 1.0
   -moz-border-radius: 30px;
   border-radius: 30px;
   border: 1px solid #ddd;
+  margin-top: 10px;
 }
 .searchform .input-search::-webkit-input-placeholder {
   color: #999999;
@@ -1220,6 +1221,7 @@ Version 1.0
   background: none;
   outline: none;
   border: none;
+  margin-top: 10px;
 }
 @media (min-width: 1025px) {
   .searchform .button-search:hover {

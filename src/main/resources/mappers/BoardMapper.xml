@@ -5,21 +5,21 @@
 
     <sql id="boardColumns">
         idx
-        , title as title
-        , content as content
-        , writer as writer
-        , view_cnt as viewCnt
-        , notice_yn as noticeYn
-        , secret_yn as secretYn
-        , delete_yn as deleteYn
-        , insert_time as insertTime
-        , update_time as updateTime
-        , delete_time as deleteTime
+        , title
+        , content
+        , writer
+        , view_cnt
+        , notice_yn
+        , secret_yn
+        , delete_yn
+        , insert_time
+        , update_time
+        , delete_time
     </sql>
 
     <insert id="insertBoard" parameterType="BoardDTO">
         INSERT INTO tb_board (
-        <include refid="boardColumns"/>
+        <include refid="boardColumns" />
         ) VALUES (
         #{idx}
         , #{title}
@@ -36,10 +36,14 @@
     </insert>
 
     <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
-        SELECT <include refid="boardColumns"/>
-         FROM tb_board
-        WHERE delete_yn = 'N'
-          AND idx = #{idx}
+        SELECT
+        <include refid="boardColumns" />
+        FROM
+        tb_board
+        WHERE
+        delete_yn = 'N'
+        AND
+        idx = #{idx}
     </select>
 
     <update id="updateBoard" parameterType="BoardDTO">
@@ -51,14 +55,17 @@
         , writer = #{writer}
         , notice_yn = IFNULL(#{noticeYn}, 'N')
         , secret_yn = IFNULL(#{secretYn}, 'N')
-        WHERE idx = #{idx}
+        WHERE
+        idx = #{idx}
     </update>
 
     <update id="deleteBoard" parameterType="long">
         UPDATE tb_board
-           SET delete_yn = 'Y'
-             , delete_time = NOW()
-          WHERE idx = #{idx}
+        SET
+        delete_yn = 'Y'
+        , delete_time = NOW()
+        WHERE
+        idx = #{idx}
     </update>
 
     <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
@@ -68,12 +75,12 @@
         tb_board
         WHERE
         delete_yn = 'N'
-        <include refid="mappers.CommonMapper.search" />
         ORDER BY
         notice_yn ASC,
         idx DESC,
         insert_time DESC
-        <include refid="mappers.CommonMapper.paging" />
+        LIMIT
+        #{paginationInfo.firstRecordIndex}, #{recordsPerPage}
     </select>
 
     <select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
@@ -83,7 +90,6 @@
         tb_board
         WHERE
         delete_yn = 'N'
-        <include refid="mappers.CommonMapper.search" />
     </select>
 
 </mapper>
