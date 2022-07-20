@@ -4,8 +4,6 @@ package com.board.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 public class BoardDTO extends  CommonDTO{
@@ -49,20 +47,6 @@ public class BoardDTO extends  CommonDTO{
      */
     private String deleteYn;
 
-    /**
-     * 등록일
-     */
-    private LocalDateTime insertTime;
-
-    /**
-     * 수정일
-     */
-    private LocalDateTime updateTime;
-
-    /**
-     * 삭제일
-     */
-    private LocalDateTime deleteTime;
 }
     
 
