@@ -64,4 +64,13 @@ public class BoardServiceImpl implements BoardService {
 
         return boardList;
     }
+
+    @Override
+    public List<BoardDTO> getNoticeList(BoardDTO params) {
+        List<BoardDTO> noticeList = Collections.emptyList();
+
+        noticeList = boardMapper.selectNoticeList(params);
+
+        return noticeList;
+    }
 }

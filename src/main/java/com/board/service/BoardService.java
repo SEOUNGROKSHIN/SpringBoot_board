@@ -14,4 +14,6 @@ public interface BoardService {
     public boolean deleteBoard(Long idx);
 
     public List<BoardDTO> getBoardList(BoardDTO params);
+
+    public List<BoardDTO> getNoticeList(BoardDTO params);
 }

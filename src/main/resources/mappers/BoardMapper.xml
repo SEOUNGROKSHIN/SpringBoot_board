@@ -17,6 +17,13 @@
         , delete_time as deleteTime
     </sql>
 
+    <sql id="noticeColumns">
+        idx
+      , title as title
+      , content as content
+      , insert_time as insertTime
+    </sql>
+
     <insert id="insertBoard" parameterType="BoardDTO">
         INSERT INTO tb_board (
         <include refid="boardColumns" />
@@ -77,7 +84,6 @@
         delete_yn = 'N'
         <include refid="mappers.CommonMapper.search" />
         ORDER BY
-        notice_yn ASC,
         idx DESC,
         insert_time DESC
         <include refid="mappers.CommonMapper.paging" />
@@ -90,6 +96,14 @@
         tb_board
         WHERE
         delete_yn = 'N'
+        <include refid="mappers.CommonMapper.search" />
+    </select>
+    <select id="selectNoticeList" parameterType="BoardDTO" resultType="BoardDTO">
+        SELECT
+        <include refid="noticeColumns" />
+        FROM tb_board
+        WHERE delete_yn = 'N'
+          AND notice_yn = 'Y'
         <include refid="mappers.CommonMapper.search" />
     </select>
 
