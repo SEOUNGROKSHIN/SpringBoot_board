@@ -80,8 +80,8 @@
         <include refid="boardColumns" />
         FROM
         tb_board
-        WHERE
-        delete_yn = 'N'
+        WHERE delete_yn = 'N'
+          AND notice_yn = 'N'
         <include refid="mappers.CommonMapper.search" />
         ORDER BY
         idx DESC,
